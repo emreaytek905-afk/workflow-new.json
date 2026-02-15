@@ -14,12 +14,13 @@ RUN comfy-node-install qweneditutils
 RUN comfy-node-install ComfyUI_Essentials
 
 # Update ComfyUI to latest version (Critical for Z-Image Turbo model support)
-# Install git and update repo
+# Install git and update repo AND INSTALL REQUIREMENTS (CRITICAL!)
 RUN apt-get update && apt-get install -y git && \
     git config --global --add safe.directory /comfyui && \
     cd /comfyui && \
     git checkout master && \
-    git pull
+    git pull && \
+    pip install -r requirements.txt
 
 # download models into comfyui
 RUN comfy model download --url https://huggingface.co/Phr00t/Qwen-Image-Edit-Rapid-AIO/resolve/main/v21/Qwen-Rapid-AIO-NSFW-v21.safetensors --relative-path models/checkpoints --filename Qwen-Rapid-AIO-NSFW-v21.safetensors
