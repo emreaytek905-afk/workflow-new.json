@@ -21,9 +21,6 @@ RUN apt-get update && apt-get install -y git && \
     git checkout master && \
     git pull
 
-
-
-
 # download models into comfyui
 RUN comfy model download --url https://huggingface.co/Phr00t/Qwen-Image-Edit-Rapid-AIO/resolve/main/v21/Qwen-Rapid-AIO-NSFW-v21.safetensors --relative-path models/checkpoints --filename Qwen-Rapid-AIO-NSFW-v21.safetensors
 RUN comfy model download --url https://huggingface.co/Comfy-Org/z_image_turbo/resolve/main/split_files/text_encoders/qwen_3_4b.safetensors --relative-path models/clip --filename qwen_3_4b.safetensors
